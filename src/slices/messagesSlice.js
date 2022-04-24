@@ -5,7 +5,7 @@ const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState();
 
 const messagesSlice = createSlice({
-  name: 'channels',
+  name: 'messages',
   initialState,
   reducers: {
     addMessages: messagesAdapter.addMany,

@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { actions as channelsActions } from '../slices/channelsSlice.js';
+import { actions as messagesActions } from '../slices/messagesSlice.js';
 import Channels from '../components/channels.jsx';
 import Header from './Header.jsx';
 import Messages from '../components/messages.jsx';
@@ -23,6 +24,7 @@ function Chat() {
   const fetchContent = async () => {
     const { data } = await axios.get('/api/v1/data', { headers: auth });
     dispatch(channelsActions.addChannels(data.channels));
+    dispatch(messagesActions.addMessages(data.messages));
   };
 
   fetchContent();
