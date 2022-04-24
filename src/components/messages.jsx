@@ -1,23 +1,28 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectors } from '../slices/messagesSlice.js';
+import { selectors as channelsSelectors } from '../slices/channelsSlice.js';
+import { selectors as messagesSelectors } from '../slices/messagesSlice.js';
 import Message from './message.jsx';
 
 function Messages() {
-  const messages = useSelector(selectors.selectAll);
+  const messages = useSelector(messagesSelectors.selectAll);
+  const channels = useSelector(channelsSelectors.selectAll);
+  const currentChannelId = useSelector((store) => store.channels.currentChannelId);
+  const currentChanel = channels.find(({ id }) => currentChannelId === id);
+  const currentChanelName = currentChanel ? currentChanel.name : '';
+  const me = messages.filter(({ channelId }) => Number(channelId) === currentChannelId);
   return (
     <>
       <div className="bg-light mb-4 p-3 shadow-sm small">
-        <p className="m-0"><b># general</b></p>
+        <p className="m-0"><b>{`# ${currentChanelName}`}</b></p>
         <span className="text-muted">170 сообщений</span>
       </div>
       <div id="messages-box" className="chat-messages overflow-auto px-5 ">
-        {messages.map(({
-          message, username, channelId, id,
+        {me.map(({
+          message, username, id,
         }) => (
           <Message
             message={message}
-            channelId={channelId}
             key={id}
             name={username}
           />

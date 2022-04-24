@@ -1,16 +1,17 @@
 import React, { useRef, useState } from 'react';
-import sendMessage from './socket.jsx';
+import { useSelector } from 'react-redux';
+import { sendMessage } from './socket.jsx';
 
 function Input() {
   const [message, setMessage] = useState('');
   const input = useRef();
   const { username } = localStorage;
-  const channelId = 1;
+  const currentId = useSelector((store) => store.channels.currentChannelId);
 
   const handlerSumbit = (e) => {
     e.preventDefault();
     input.current.focus();
-    sendMessage(message, username, channelId);
+    sendMessage(message, username, currentId);
     setMessage('');
   };
 
