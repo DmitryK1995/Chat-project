@@ -42,7 +42,11 @@ function RenameChannel({
   return (
     <Modal show={showRename} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Переименовать канал</Modal.Title>
+        <Modal.Title>
+          {initLocales.t('rename')}
+          {' '}
+          {initLocales.t('channel')}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>

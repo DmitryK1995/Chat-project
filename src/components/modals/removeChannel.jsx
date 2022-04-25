@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { removeChannel } from '../socket.jsx';
+import initLocales from '../../locales/index.js';
 
 function RemoveChannel({ showRemove, setShowRemove, id }) {
   const handleClose = () => setShowRemove(false);
@@ -13,15 +14,19 @@ function RemoveChannel({ showRemove, setShowRemove, id }) {
     (
       <Modal show={showRemove} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Удалить канал</Modal.Title>
+          <Modal.Title>
+            {initLocales.t('delete')}
+            {' '}
+            {initLocales.t('channel')}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>Вы уверены?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Отменить
+            {initLocales.t('cancel')}
           </Button>
           <Button variant="primary" onClick={handleDelete}>
-            Удалить
+            {initLocales.t('delete')}
           </Button>
         </Modal.Footer>
       </Modal>

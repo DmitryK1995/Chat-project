@@ -4,6 +4,7 @@ import {
 } from 'react-bootstrap';
 import RenameChannel from './renameChannel.jsx';
 import RemoveChannel from './removeChannel.jsx';
+import initLocales from '../../locales/index.js';
 
 function DropDownMenu({ id, name }) {
   const [showRemove, setShowRemove] = useState(false);
@@ -23,8 +24,8 @@ function DropDownMenu({ id, name }) {
       {showRename ? <RenameChannel showRename={showRename} setShowRename={setShowRename} name={name} id={id} /> : ''}
       <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" />
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1" onClick={removeModal}>Удалить</Dropdown.Item>
-        <Dropdown.Item href="#/action-2" onClick={renameModal}>Переименовать</Dropdown.Item>
+        <Dropdown.Item href="#/action-1" onClick={removeModal}>{initLocales.t('delete')}</Dropdown.Item>
+        <Dropdown.Item href="#/action-2" onClick={renameModal}>{initLocales.t('rename')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

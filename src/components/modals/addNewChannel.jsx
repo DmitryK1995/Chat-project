@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { selectors } from '../../slices/channelsSlice.js';
 import { createNewChannel } from '../socket.jsx';
+import initLocales from '../../locales/index.js';
 
 function AddNewChannel({ onHide }) {
   const schema = yup.object().shape({
@@ -51,7 +52,11 @@ function AddNewChannel({ onHide }) {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <div className="modal-title h4">Добавить канал</div>
+              <div className="modal-title h4">
+                {initLocales.t('add')}
+                {' '}
+                {initLocales.t('channel')}
+              </div>
               <button type="button" aria-label="Close" data-bs-dismiss="modal" className="btn btn-close" onClick={handleClose} />
             </div>
             <div className="modal-body">
@@ -70,8 +75,8 @@ function AddNewChannel({ onHide }) {
                   <FormControl className="visually-hidden" htmlFor="name" />
                   <div className="invalid-feedback" />
                   <div className="d-flex justify-content-end">
-                    <button type="button" className="me-2 btn btn-secondary" onClick={handleClose}>Отменить</button>
-                    <button type="submit" className="btn btn-primary">Отправить</button>
+                    <button type="button" className="me-2 btn btn-secondary" onClick={handleClose}>{initLocales.t('cancel')}</button>
+                    <button type="submit" className="btn btn-primary">{initLocales.t('send')}</button>
                   </div>
                 </div>
               </form>
