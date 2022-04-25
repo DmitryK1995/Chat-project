@@ -7,6 +7,7 @@ import {
 import LoginPage from '../pages/login.jsx';
 import Chat from '../pages/chat.jsx';
 import Signup from '../pages/signup.jsx';
+import ErrorPage from '../pages/errorPage.jsx';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -23,10 +24,6 @@ function CreateRoutes() {
       </Routes>
     </Router>
   );
-}
-
-function ErrorPage() {
-  return <h1>Страницы не существует!</h1>;
 }
 
 export default CreateRoutes;

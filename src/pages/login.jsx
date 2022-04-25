@@ -46,7 +46,7 @@ function LoginPage() {
           <div className="card shadow-sm">
             <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
               <Form onSubmit={formik.handleSubmit} className="p-3">
-                <div className="text-center"><h2>{initLocales.t('enter')}</h2></div>
+                <h1 className="text-center mb-4">{initLocales.t('enter')}</h1>
                 <Form.Group>
                   <Form.Control
                     onChange={formik.handleChange}
