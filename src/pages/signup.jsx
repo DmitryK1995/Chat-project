@@ -7,8 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header.jsx';
 import initLocales from '../locales/index.js';
+import routes from '../routes.js';
 
 function Signup() {
+  const singupPath = routes.signupPath();
   const [isValid, setIsValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const classNameField = cn('form-control', isValid ? 'is-invalid' : '');
@@ -21,7 +23,6 @@ function Signup() {
       .required('password confirmation is a required field')
       .oneOf([yup.ref('password'), null], 'password confirmation does not match to password'),
   });
-  console.log(localStorage);
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -33,7 +34,7 @@ function Signup() {
         schema.validateSync(fields);
         setErrorMessage('');
         setIsValid(false);
-        await axios.post('/api/v1/signup', fields);
+        await axios.post(singupPath, fields);
         navigate('/login');
       } catch (e) {
         setIsValid(true);

@@ -5,42 +5,18 @@ import 'regenerator-runtime/runtime.js';
 
 import '../assets/application.scss';
 import React from 'react';
-import * as ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import LoginPage from './pages/login.jsx';
-import Chat from './pages/chat.jsx';
+import ReactDOM from 'react-dom';
+import CreateRoutes from './components/main.jsx';
 import store from './slices/index.js';
-import Signup from './pages/signup.jsx';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
 
-function Routez() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Chat />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </Router>
-  );
-}
-
-function ErrorPage() {
-  return <h1>Страницы не существует!</h1>;
-}
-
 ReactDOM.render(
   <Provider store={store}>
-    <Routez />
+    <CreateRoutes />
   </Provider>,
   document.getElementById('chat'),
 );

@@ -5,11 +5,13 @@ import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header.jsx';
 import initLocales from '../locales/index.js';
+import routes from '../routes.js';
 
 function LoginPage() {
   const [authFailed, setAuthFailed] = useState(false);
   const inputRef = useRef();
   const navigate = useNavigate();
+  const loginPath = routes.loginPath();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -24,8 +26,8 @@ function LoginPage() {
       setAuthFailed(false);
 
       try {
-        const res = await axios.post('/api/v1/login', values);
-        const { token, username } = JSON.parse(res.request.response);
+        const data = await axios.post(loginPath, values);
+        const { token, username } = JSON.parse(data.request.response);
         localStorage.setItem('token', token);
         localStorage.setItem('username', username);
         navigate('/');

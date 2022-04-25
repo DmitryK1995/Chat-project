@@ -10,10 +10,12 @@ import Channels from '../components/channels.jsx';
 import Header from './Header.jsx';
 import Messages from '../components/messages.jsx';
 import Input from '../components/input.jsx';
+import routes from '../routes.js';
 
 function Chat() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dataPath = routes.dataPath();
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       navigate('/login');
@@ -22,7 +24,7 @@ function Chat() {
   const token = localStorage.getItem('token');
   const auth = { Authorization: `Bearer ${token}` };
   const fetchContent = async () => {
-    const { data } = await axios.get('/api/v1/data', { headers: auth });
+    const { data } = await axios.get(dataPath, { headers: auth });
     dispatch(channelsActions.addChannels(data.channels));
     dispatch(messagesActions.addMessages(data.messages));
   };
