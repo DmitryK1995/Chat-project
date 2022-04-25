@@ -4,11 +4,16 @@ import {
 } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
+import * as yup from 'yup';
 import { selectors } from '../../slices/channelsSlice.js';
 import { createNewChannel } from '../socket.jsx';
 
 function AddNewChannel({ onHide }) {
+  const schema = yup.object().shape({
+    channelName: yup.string().trim().required(),
+  });
   const [status, setStatus] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const channels = useSelector(selectors.selectAll);
   const inputRef = useRef();
   useEffect(() => {
@@ -19,10 +24,13 @@ function AddNewChannel({ onHide }) {
     initialValues: {
       channelName: '',
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      const yupCheck = schema.isValidSync(values);
       const nameChannel = values.channelName;
       const repeatNameCheck = channels.find(({ name }) => name === nameChannel);
-      if (repeatNameCheck) {
+      if (repeatNameCheck || !yupCheck) {
+        // eslint-disable-next-line no-unused-expressions
+        (repeatNameCheck) ? setErrorMessage('Канал с таким именем уже существует!') : setErrorMessage('Обязательное поле');
         setStatus(true);
         inputRef.current.select();
       } else {
@@ -58,7 +66,7 @@ function AddNewChannel({ onHide }) {
                     onChange={formik.handleChange}
                     isInvalid={status}
                   />
-                  <FormControl.Feedback type="invalid">Канал уже существует!</FormControl.Feedback>
+                  <FormControl.Feedback type="invalid">{errorMessage}</FormControl.Feedback>
                   <FormControl className="visually-hidden" htmlFor="name" />
                   <div className="invalid-feedback" />
                   <div className="d-flex justify-content-end">
