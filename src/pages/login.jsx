@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header.jsx';
+import initLocales from '../locales/index.js';
 
 function LoginPage() {
   const [authFailed, setAuthFailed] = useState(false);
@@ -35,44 +37,55 @@ function LoginPage() {
   });
 
   return (
-    <div className="container-fluid">
-      <div className="row justify-content-center pt-5">
-        <div className="col-sm-4">
-          <Form onSubmit={formik.handleSubmit} className="p-3">
-            <Form.Group>
-              <Form.Label htmlFor="username">Username</Form.Label>
-              <Form.Control
-                onChange={formik.handleChange}
-                value={formik.values.username}
-                placeholder="username"
-                name="username"
-                id="username"
-                autoComplete="username"
-                isInvalid={authFailed}
-                ref={inputRef}
-                required
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label htmlFor="password">Password</Form.Label>
-              <Form.Control
-                onChange={formik.handleChange}
-                value={formik.values.password}
-                type="password"
-                placeholder="password"
-                name="password"
-                id="password"
-                autoComplete="current-password"
-                isInvalid={authFailed}
-                required
-              />
-              <Form.Control.Feedback type="invalid">the username or password is incorrect</Form.Control.Feedback>
-            </Form.Group>
-            <Button type="submit" variant="outline-primary">Submit</Button>
-          </Form>
+    <>
+      <Header />
+      <div className="row justify-content-center align-content-center h-100">
+        <div className="col-12 col-md-8 col-xxl-6">
+          <div className="card shadow-sm">
+            <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
+              <Form onSubmit={formik.handleSubmit} className="p-3">
+                <div className="text-center"><h2>{initLocales.t('enter')}</h2></div>
+                <Form.Group>
+                  <Form.Control
+                    onChange={formik.handleChange}
+                    value={formik.values.username}
+                    placeholder="Ваш ник"
+                    name="username"
+                    id="username"
+                    autoComplete="username"
+                    isInvalid={authFailed}
+                    ref={inputRef}
+                    required
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Control
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    type="password"
+                    placeholder={initLocales.t('password')}
+                    name="password"
+                    id="password"
+                    autoComplete="current-password"
+                    isInvalid={authFailed}
+                    required
+                  />
+                  <div className="text-danger">
+                    {authFailed ? 'Неверные имя пользователя или пароль' : ''}
+                  </div>
+                </Form.Group>
+                <Button type="submit" variant="outline-primary" style={{ marginTop: '30px' }}>{initLocales.t('enter')}</Button>
+              </Form>
+            </div>
+            <div className="text-center" style={{ paddingBottom: '40px' }}>
+              <span>Нет аккаунта?</span>
+              {' '}
+              <a href="/signup">{initLocales.t('registration')}</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

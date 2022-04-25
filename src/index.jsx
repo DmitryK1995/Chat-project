@@ -15,6 +15,7 @@ import { Provider } from 'react-redux';
 import LoginPage from './pages/login.jsx';
 import Chat from './pages/chat.jsx';
 import store from './slices/index.js';
+import Signup from './pages/signup.jsx';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -26,6 +27,7 @@ function Routez() {
       <Routes>
         <Route path="/" element={<Chat />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
