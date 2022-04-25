@@ -4,10 +4,13 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom';
 import LoginPage from '../pages/login.jsx';
 import Chat from '../pages/chat.jsx';
 import Signup from '../pages/signup.jsx';
 import ErrorPage from '../pages/errorPage.jsx';
+import store from '../slices/index.js';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -26,4 +29,12 @@ function CreateRoutes() {
   );
 }
 
-export default CreateRoutes;
+// eslint-disable-next-line react/no-render-return-value
+const render = () => ReactDOM.render(
+  <Provider store={store}>
+    <CreateRoutes />
+  </Provider>,
+  document.getElementById('chat'),
+);
+
+export default render;
