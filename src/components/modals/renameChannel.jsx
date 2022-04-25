@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Modal, Button, FormControl } from 'react-bootstrap';
 import * as yup from 'yup';
@@ -16,8 +16,14 @@ function RenameChannel({
   const [isInvalid, setInvalid] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const channels = useSelector(selectors.selectAll);
-  const inputRef = useRef(null);
+  const inputRef = useRef();
   const handleClose = () => setShowRename(false);
+
+  useEffect(() => {
+    if (showRename) {
+      inputRef.current.focus();
+    }
+  });
 
   const formik = useFormik({
     initialValues: {

@@ -20,13 +20,13 @@ function DropDownMenu({ id, name }) {
 
   return (
     <Dropdown>
-      {showRemove ? <RemoveChannel showRemove={showRemove} setShowRemove={setShowRemove} id={id} /> : ''}
-      {showRename ? <RenameChannel showRename={showRename} setShowRename={setShowRename} name={name} id={id} /> : ''}
       <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" />
       <Dropdown.Menu>
         <Dropdown.Item href="#/action-1" onClick={removeModal}>{initLocales.t('delete')}</Dropdown.Item>
         <Dropdown.Item href="#/action-2" onClick={renameModal}>{initLocales.t('rename')}</Dropdown.Item>
       </Dropdown.Menu>
+      {showRemove ? <RemoveChannel showRemove={showRemove} setShowRemove={setShowRemove} id={id} /> : ''}
+      {showRename ? <RenameChannel showRename={showRename} setShowRename={setShowRename} name={name} id={id} /> : ''}
     </Dropdown>
   );
 }
