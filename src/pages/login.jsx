@@ -45,9 +45,9 @@ function LoginPage() {
         <div className="col-12 col-md-8 col-xxl-6">
           <div className="card shadow-sm">
             <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
-              <Form onSubmit={formik.handleSubmit} className="p-3">
+              <Form onSubmit={formik.handleSubmit} className="w-50">
                 <h1 className="text-center mb-4">{initLocales.t('enter')}</h1>
-                <Form.Group>
+                <Form.Group className="mb-3">
                   <Form.Control
                     onChange={formik.handleChange}
                     value={formik.values.username}
@@ -60,7 +60,7 @@ function LoginPage() {
                     required
                   />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="mb-3">
                   <Form.Control
                     onChange={formik.handleChange}
                     value={formik.values.password}
@@ -76,7 +76,7 @@ function LoginPage() {
                     {authFailed ? 'Неверные имя пользователя или пароль' : ''}
                   </div>
                 </Form.Group>
-                <Button type="submit" variant="outline-primary" style={{ marginTop: '30px' }}>{initLocales.t('enter')}</Button>
+                <Button type="submit" variant="outline-primary" style={{ marginTop: '15px' }}>{initLocales.t('enter')}</Button>
               </Form>
             </div>
             <div className="text-center" style={{ paddingBottom: '40px' }}>
