@@ -1,6 +1,6 @@
 {
-  "name": "@hexlet/code",
-  "version": "0.0.1",
+  "name": "chat-project",
+  "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "type": "module",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DmitryK1995/frontend-project-lvl4.git"
+    "url": "git+https://github.com/DmitryK1995/Chat-project.git"
   },
   "author": "Dmitry Kolesnikov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DmitryK1995/frontend-project-lvl4/issues"
+    "url": "https://github.com/DmitryK1995/Chat-project/issues"
   },
-  "homepage": "https://github.com/DmitryK1995/frontend-project-lvl4#readme",
+  "homepage": "https://github.com/DmitryK1995/Chat-project#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.26.1",
