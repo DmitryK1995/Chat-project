@@ -31,7 +31,7 @@ function AddNewChannel({ onHide }) {
       const repeatNameCheck = channels.find(({ name }) => name === nameChannel);
       if (repeatNameCheck || !yupCheck) {
         // eslint-disable-next-line no-unused-expressions
-        (repeatNameCheck) ? setErrorMessage('Канал с таким именем уже существует!') : setErrorMessage('Обязательное поле');
+        (repeatNameCheck) ? setErrorMessage(initLocales.t('channelExist')) : setErrorMessage(initLocales.t('requiredField'));
         setStatus(true);
         inputRef.current.select();
       } else {

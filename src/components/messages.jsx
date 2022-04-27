@@ -10,13 +10,13 @@ function Messages() {
   useEffect(() => {
     messagesBox.current.scrollTop = messagesBox.current.scrollHeight;
   });
-  const messages = useSelector(messagesSelectors.selectAll);
-  const channels = useSelector(channelsSelectors.selectAll);
   const currentChannelId = useSelector((store) => store.channels.currentChannelId);
-  const currentChanel = channels.find(({ id }) => currentChannelId === id);
-  const currentChanelName = currentChanel ? currentChanel.name : '';
-  const messageFilter = messages.filter(({ channelId }) => Number(channelId) === currentChannelId);
-  const messagesCount = messageFilter.length;
+  const currentChannel = useSelector(channelsSelectors.selectAll)
+    .find(({ id }) => currentChannelId === id);
+  const currentChanelName = currentChannel ? currentChannel.name : '';
+  const messages = useSelector(messagesSelectors.selectAll)
+    .filter(({ channelId }) => Number(channelId) === currentChannelId);
+  const messagesCount = messages.length;
   return (
     <>
       <div className="bg-light mb-4 p-3 shadow-sm small">
@@ -24,7 +24,7 @@ function Messages() {
         <span className="text-muted">{initLocales.t('message', { count: messagesCount })}</span>
       </div>
       <div id="messages-box" className="chat-messages overflow-auto px-5" ref={messagesBox}>
-        {messageFilter.map(({
+        {messages.map(({
           message, username, id,
         }) => (
           <Message

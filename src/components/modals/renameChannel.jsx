@@ -35,7 +35,7 @@ function RenameChannel({
       const repeatNameCheck = channels.find((channel) => channel.name === nameChannel);
       if (repeatNameCheck || !yupCheck) {
         // eslint-disable-next-line no-unused-expressions
-        (repeatNameCheck) ? setErrorMessage('Канал с таким именем уже существует!') : setErrorMessage('Обязательное поле');
+        (repeatNameCheck) ? setErrorMessage(initLocales.t('channelExist')) : setErrorMessage(initLocales.t('requiredField'));
         setInvalid(true);
         inputRef.current.select();
       } else {

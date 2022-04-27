@@ -1,5 +1,7 @@
 export default {
   translation: {
+    channelExist: 'Канал с таким именем уже существует!',
+    requiredField: 'Обязательное поле',
     confirmation: 'Подтвердите',
     delete: 'Удалить',
     rename: 'Переименовать',

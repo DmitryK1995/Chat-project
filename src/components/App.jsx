@@ -29,14 +29,12 @@ function CreateRoutes() {
   );
 }
 
-const entryElement = document.querySelector('#chat');
-
 // eslint-disable-next-line react/no-render-return-value
 const render = () => ReactDOM.render(
   <Provider store={store}>
     <CreateRoutes />
   </Provider>,
-  entryElement,
+  document.getElementById('chat'),
 );
 
 export default render;
