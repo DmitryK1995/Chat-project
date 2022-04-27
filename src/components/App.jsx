@@ -29,7 +29,7 @@ function CreateRoutes() {
   );
 }
 
-const entryElement = document.getElementById('chat');
+const entryElement = document.querySelector('#chat');
 
 // eslint-disable-next-line react/no-render-return-value
 const render = () => ReactDOM.render(
