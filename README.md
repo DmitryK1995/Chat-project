@@ -7,3 +7,4 @@
 - React
 - bootstrap
 - Redux Toolkit
+- Webpack

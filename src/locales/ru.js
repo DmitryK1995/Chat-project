@@ -1,5 +1,6 @@
 export default {
   translation: {
+    addChannel: 'Добавить канал',
     renameChannel: 'Переименовать канал',
     deleteChannel: 'Удалить канал',
     channelExist: 'Канал с таким именем уже существует!',

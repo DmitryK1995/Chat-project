@@ -53,9 +53,7 @@ function AddNewChannel({ onHide }) {
           <div className="modal-content">
             <div className="modal-header">
               <div className="modal-title h4">
-                {initLocales.t('add')}
-                {' '}
-                {initLocales.t('channel')}
+                {initLocales.t('addChannel')}
               </div>
               <button type="button" aria-label="Close" data-bs-dismiss="modal" className="btn btn-close" onClick={handleClose} />
             </div>
