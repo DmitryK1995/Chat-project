@@ -49,9 +49,7 @@ function RenameChannel({
     <Modal show={showRename} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>
-          {initLocales.t('rename')}
-          {' '}
-          {initLocales.t('channel')}
+          {initLocales.t('renameChannel')}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

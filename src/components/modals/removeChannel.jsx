@@ -15,9 +15,7 @@ function RemoveChannel({ showRemove, setShowRemove, id }) {
       <Modal show={showRemove} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            {initLocales.t('delete')}
-            {' '}
-            {initLocales.t('channel')}
+            {initLocales.t('deleteChannel')}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>Вы уверены?</Modal.Body>
